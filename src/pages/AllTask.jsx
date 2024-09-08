@@ -35,7 +35,9 @@ const AllTask = () => {
         console.error("Error fetching tasks:", error);
       }
     };
-    fetch();
+    if (id && accessToken) {
+      fetch();
+    }
   }, [userdata]);
 
   return (

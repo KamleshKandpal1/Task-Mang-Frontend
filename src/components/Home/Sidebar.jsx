@@ -65,8 +65,9 @@ const Sidebar = () => {
         console.error("Error fetching tasks:", error);
       }
     };
-
-    fetch();
+    if (id && accessToken) {
+      fetch();
+    }
   }, []);
   const capitalizeFullName = (fullName) => {
     return fullName
