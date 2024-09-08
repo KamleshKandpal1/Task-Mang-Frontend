@@ -27,7 +27,7 @@ const InputData = ({
         return;
       } else {
         const response = await axios.post(
-          `https://task-management-application-backend-2z9osh7xg.vercel.app/api/v1/tasks/createtask`,
+          `https://task-mang-api-backend.onrender.com/api/v1/tasks/createtask`,
           Data,
           { headers }
         );
@@ -47,7 +47,7 @@ const InputData = ({
   const handleUpdate = async () => {
     try {
       const response = await axios.put(
-        `https://task-management-application-backend-2z9osh7xg.vercel.app/api/v1/tasks/updateTask/${updateUserdata.id}`,
+        `https://task-mang-api-backend.onrender.com/api/v1/tasks/updateTask/${updateUserdata.id}`,
         Data,
         { headers, timeout: 3000 }
       );

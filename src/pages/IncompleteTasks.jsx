@@ -20,7 +20,7 @@ const IncompleteTasks = () => {
         };
 
         const response = await axios.get(
-          `https://task-management-application-backend-2z9osh7xg.vercel.app/api/v1/tasks/get-incomp-task/${id}`,
+          `https://task-mang-api-backend.onrender.com/api/v1/tasks/get-incomp-task/${id}`,
           { headers }
         );
         setData(response.data.data);

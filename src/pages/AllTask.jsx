@@ -27,7 +27,7 @@ const AllTask = () => {
         };
 
         const response = await axios.get(
-          `https://task-management-application-backend-2z9osh7xg.vercel.app/api/v1/tasks/getAllTask/${id}`,
+          `https://task-mang-api-backend.onrender.com/api/v1/tasks/getAllTask/${id}`,
           { headers }
         );
         setUserData(response.data.data.userData);

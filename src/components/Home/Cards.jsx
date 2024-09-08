@@ -23,7 +23,7 @@ const Cards = ({
         throw new Error("Missing authentication data");
       } else {
         const response = await axios.put(
-          `https://task-management-application-backend-2z9osh7xg.vercel.app/api/v1/tasks/update-complete-task/${id}`,
+          `https://task-mang-api-backend.onrender.com/api/v1/tasks/update-complete-task/${id}`,
           {},
           { headers, timeout: 3000 }
         );
@@ -41,7 +41,7 @@ const Cards = ({
         throw new Error("Missing authentication data");
       } else {
         const response = await axios.put(
-          `https://task-management-application-backend-2z9osh7xg.vercel.app/api/v1/tasks/update-imp-task/${id}`,
+          `https://task-mang-api-backend.onrender.com/api/v1/tasks/update-imp-task/${id}`,
           {},
           { headers, timeout: 3000 }
         );
@@ -59,7 +59,7 @@ const Cards = ({
         throw new Error("Missing authentication data");
       } else {
         const response = await axios.delete(
-          `https://task-management-application-backend-2z9osh7xg.vercel.app/api/v1/tasks/deleteTask/${id}`,
+          `https://task-mang-api-backend.onrender.com/api/v1/tasks/deleteTask/${id}`,
           { headers, timeout: 3000 }
         );
         console.log(response.data.message);
