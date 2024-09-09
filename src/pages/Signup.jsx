@@ -9,6 +9,7 @@ const Signup = () => {
   const isLogged = useSelector((state) => state.auth.isLoggedIn);
   if (isLogged === true) {
     history("/");
+    //
   }
   const [Data, setData] = useState({
     fullName: "",
