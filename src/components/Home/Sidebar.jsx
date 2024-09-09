@@ -3,7 +3,7 @@ import { CgNotes } from "react-icons/cg";
 import { MdLabelImportant } from "react-icons/md";
 import { FaCheckDouble } from "react-icons/fa6";
 import { TbNotebookOff } from "react-icons/tb";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom"; // Import useLocation
 import { authActions } from "../../store/auth";
 import { useDispatch } from "react-redux";
 import { IoIosLogOut } from "react-icons/io";
@@ -12,24 +12,22 @@ import axios from "axios";
 const Sidebar = () => {
   const dispatch = useDispatch();
   const history = useNavigate();
+  const location = useLocation(); // Get the current location
   const data = [
     { title: "All Tasks", icon: <CgNotes />, link: "/" },
     {
       title: "Complete Tasks",
       icon: <FaCheckDouble />,
-
       link: "/complete-Tasks",
     },
     {
       title: "Incomplete Tasks",
       icon: <TbNotebookOff />,
-
       link: "/incomplete-Tasks",
     },
     {
       title: "Important Tasks",
       icon: <MdLabelImportant />,
-
       link: "/important-Tasks",
     },
   ];
@@ -41,13 +39,14 @@ const Sidebar = () => {
     localStorage.clear("refreshToken");
     history("/login");
   };
+
   const [userdata, setUserData] = useState(null);
   const accessToken = localStorage.getItem("accessToken");
   const id = localStorage.getItem("id");
+
   useEffect(() => {
     const fetch = async () => {
       try {
-        // Make sure you have both tokens
         if (!accessToken || !id) {
           throw new Error("Missing authentication data");
         }
@@ -69,7 +68,8 @@ const Sidebar = () => {
     if (id && accessToken) {
       fetch();
     }
-  }, []);
+  }, [id, accessToken]);
+
   const capitalizeFullName = (fullName) => {
     return fullName
       .split(" ")
@@ -89,15 +89,22 @@ const Sidebar = () => {
         </div>
       )}
       <div>
-        {data.map((items, i) => (
-          <Link
-            to={items.link}
-            key={i}
-            className="my-2 flex items-center p-2 rounded-lg cursor-pointer hover:bg-gray-600 transition-all  duration-300"
-          >
-            {items.icon} &nbsp; {items.title}
-          </Link>
-        ))}
+        {data.map((items, i) => {
+          const isActive = location.pathname === items.link; // Check if the current link is active
+          return (
+            <Link
+              to={items.link}
+              key={i}
+              className={`my-2 flex items-center px-2 py-1.5 rounded-lg cursor-pointer hover:bg-gray-600 transition-all duration-300 relative ${
+                isActive
+                  ? "after:content-[''] after:absolute after:left-full after:-bottom-[0px] after:-translate-x-1/2 after:w-[2%] after:h-[100%] after:bg-green-500 after:rounded-md after:transition-all after:duration-300"
+                  : ""
+              }`}
+            >
+              {items.icon} &nbsp; {items.title}
+            </Link>
+          );
+        })}
       </div>
       <div>
         <button

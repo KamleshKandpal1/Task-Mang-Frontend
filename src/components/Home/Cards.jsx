@@ -15,10 +15,11 @@ const Cards = ({
   const item = [
     {
       title: "title 1",
-      desc: "desc 1",
+      desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid neque praesentium labore odit, sunt eaque dolorum suscipit, sed nisi dolore ad quidem asperiores minima obcaecati beatae quae quasi, sint ea.",
       complete: "false",
       important: "true",
     },
+
     {
       title: "title 12",
       desc: "desc 1",
@@ -100,15 +101,23 @@ const Cards = ({
       <div className="absolute">
         <ToasterSetup />
       </div>
-      {data &&
-        data.map((items, i) => (
+      {item &&
+        item.map((items, i) => (
           <div
             className="bg-gray-700/40 rounded-xl px-2 py-4 flex flex-col justify-between glsas-morf"
-            key={items._id}
+            key={i}
           >
             <div>
-              <h3 className="text-lg font-semibold">{items.title}</h3>
-              <p className="text-gray-300 text-sm font-normal my-2">
+              <h3
+                className="text-lg font-semiboldbreak-words text-pretty "
+                style={{ hyphens: "auto" }}
+              >
+                {items.title}
+              </h3>
+              <p
+                className="text-gray-300 text-sm font-normal my-2 break-words text-pretty "
+                style={{ hyphens: "auto" }}
+              >
                 {items.desc}
               </p>
             </div>
@@ -116,13 +125,13 @@ const Cards = ({
               <button
                 className={`${
                   items.complete === true ? "bg-green-700" : "bg-red-400"
-                }  p-1.5  rounded-3xl text-sm font-medium `}
+                }  py-1.5 px-2  rounded-3xl text-sm font-medium `}
                 onClick={() => handleCompleteTask(items._id)}
               >
                 {items.complete === true ? "Completed" : "In-Completed"}
               </button>
 
-              <div className="w-1/2 text-xl p-2 flex gap-2 justify-end ">
+              <div className="w-1/2 text-xl p-2 flex gap-3 justify-end ">
                 <button onClick={() => handleImportantTask(items._id)}>
                   <FaHeart
                     className={`${
