@@ -100,8 +100,8 @@ const Cards = ({
       <div className="absolute">
         <ToasterSetup />
       </div>
-      {item &&
-        item.map((items, i) => (
+      {data &&
+        data.map((items, i) => (
           <div
             className="bg-gray-700/40 rounded-xl px-2 py-4 flex flex-col justify-between glsas-morf"
             key={items._id}
