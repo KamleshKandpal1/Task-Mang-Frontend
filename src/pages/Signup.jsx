@@ -7,7 +7,8 @@ import { useSelector } from "react-redux";
 const Signup = () => {
   const history = useNavigate();
   const isLogged = useSelector((state) => state.auth.isLoggedIn);
-  if (isLogged === false) {
+  if (isLogged === true) {
+    // chnage to false when working in localHost
     history("/");
   }
   const [Data, setData] = useState({

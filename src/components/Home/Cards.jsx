@@ -12,26 +12,6 @@ const Cards = ({
   setUpdateUserData,
   updateUserdata,
 }) => {
-  const item = [
-    {
-      title: "title 1",
-      desc: "desc 1",
-      complete: "false",
-      important: "true",
-    },
-    {
-      title: "title 12",
-      desc: "desc 1",
-      complete: "true",
-      important: "true",
-    },
-    {
-      title: "title 13",
-      desc: "desc 1",
-      complete: "false",
-      important: "true",
-    },
-  ];
   const accessToken = localStorage.getItem("accessToken");
   const headers = {
     Authorization: `Bearer ${accessToken}`,
