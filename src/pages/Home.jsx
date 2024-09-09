@@ -4,11 +4,11 @@ import { Outlet } from "react-router-dom";
 
 const Home = () => {
   return (
-    <div className="flex h-[98vh] gap-4">
-      <div className="w-1/5 border border-gray-500 rounded-xl p-4 flex flex-col justify-between">
+    <div className="flex h-[98vh] gap-4 p-2">
+      <div className="w-1/6 border border-gray-500 rounded-xl p-4 flex flex-col justify-between">
         <Sidebar />
       </div>
-      <div className="w-4/5 border border-gray-500 rounded-xl p-4">
+      <div className="w-5/6 border border-gray-500 rounded-xl py-4">
         <Outlet />
       </div>
     </div>

@@ -6,29 +6,30 @@ import { TbNotebookOff } from "react-icons/tb";
 import { Link, useNavigate } from "react-router-dom";
 import { authActions } from "../../store/auth";
 import { useDispatch } from "react-redux";
+import { IoIosLogOut } from "react-icons/io";
 import axios from "axios";
 
 const Sidebar = () => {
   const dispatch = useDispatch();
   const history = useNavigate();
   const data = [
-    { title: "All Tasks", icon: <CgNotes />, color: "blue", link: "/" },
+    { title: "All Tasks", icon: <CgNotes />, link: "/" },
     {
       title: "Complete Tasks",
       icon: <FaCheckDouble />,
-      color: "green",
+
       link: "/complete-Tasks",
     },
     {
       title: "Incomplete Tasks",
       icon: <TbNotebookOff />,
-      color: "red",
+
       link: "/incomplete-Tasks",
     },
     {
       title: "Important Tasks",
       icon: <MdLabelImportant />,
-      color: "",
+
       link: "/important-Tasks",
     },
   ];
@@ -100,9 +101,10 @@ const Sidebar = () => {
       </div>
       <div>
         <button
-          className="bg-gray-600 w-full p-2 rounded hover:bg-gray-500 transition-all  duration-300"
+          className="bg-gray-600 w-full p-2 rounded hover:bg-gray-500 transition-all  duration-300 flex items-center justify-center gap-2"
           onClick={handleLogout}
         >
+          <IoIosLogOut />
           Log Out
         </button>
       </div>

@@ -12,6 +12,26 @@ const Cards = ({
   setUpdateUserData,
   updateUserdata,
 }) => {
+  const item = [
+    {
+      title: "title 1",
+      desc: "desc 1",
+      complete: "false",
+      important: "true",
+    },
+    {
+      title: "title 12",
+      desc: "desc 1",
+      complete: "true",
+      important: "true",
+    },
+    {
+      title: "title 13",
+      desc: "desc 1",
+      complete: "false",
+      important: "true",
+    },
+  ];
   const accessToken = localStorage.getItem("accessToken");
   const headers = {
     Authorization: `Bearer ${accessToken}`,
@@ -76,31 +96,33 @@ const Cards = ({
   };
 
   return (
-    <div className="grid relative grid-cols-3 gap-4 p-4">
+    <div className="grid relative md:grid-cols-4 sm:grid-cols-3 gap-4 p-4">
       <div className="absolute">
         <ToasterSetup />
       </div>
-      {data &&
-        data.map((items, i) => (
+      {item &&
+        item.map((items, i) => (
           <div
-            className="bg-gray-700/40 rounded-md p-4 flex flex-col justify-between"
+            className="bg-gray-700/40 rounded-xl px-2 py-4 flex flex-col justify-between glsas-morf"
             key={items._id}
           >
             <div>
-              <h3 className="text-xl font-semibold">{items.title}</h3>
-              <p className="text-gray-300 my-2">{items.desc}</p>
+              <h3 className="text-lg font-semibold">{items.title}</h3>
+              <p className="text-gray-300 text-sm font-normal my-2">
+                {items.desc}
+              </p>
             </div>
             <div className="mt-4 w-full flex items-center justify-around ">
               <button
                 className={`${
                   items.complete === true ? "bg-green-700" : "bg-red-400"
-                }  p-2 rounded-md w-1/2`}
+                }  p-1.5  rounded-3xl text-sm font-medium `}
                 onClick={() => handleCompleteTask(items._id)}
               >
                 {items.complete === true ? "Completed" : "In-Completed"}
               </button>
 
-              <div className="w-1/2 text-2xl p-2 flex justify-around ">
+              <div className="w-1/2 text-xl p-2 flex gap-2 justify-end ">
                 <button onClick={() => handleImportantTask(items._id)}>
                   <FaHeart
                     className={`${
@@ -125,11 +147,11 @@ const Cards = ({
       {/*  */}
       {home && (
         <div
-          className="flex flex-col items-center bg-gray-700/40 rounded-md p-4 justify-center text-gray-300 hover:scale-105 hover:cursor-pointer transition-all duration-500"
+          className="flex items-center bg-gray-700/40 rounded-md p-4 justify-center text-gray-300 hover:scale-105 hover:cursor-pointer transition-all duration-500"
           onClick={() => setDisplay("fixed")}
         >
-          <IoMdAddCircle className="text-5xl" />
-          <h2 className="text-2xl mt-4">Add Task</h2>
+          <IoMdAddCircle className="text-3xl" />
+          <h2 className="text-3xl">Add Task</h2>
         </div>
       )}
     </div>

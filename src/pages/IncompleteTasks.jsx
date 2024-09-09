@@ -33,6 +33,11 @@ const IncompleteTasks = () => {
   }, [Data]);
   return (
     <div>
+      <div className="w-full flex items-center justify-between px-4 py-2">
+        <h1 className="relative text-2xl font-semibold after:content-[''] after:absolute after:left-[20%] after:-bottom-[5px] after:-translate-x-1/2 after:w-[40%] after:h-[3px] after:bg-green-500 after:rounded-md">
+          Incomplete Tasks
+        </h1>
+      </div>
       <Cards data={Data} />
     </div>
   );

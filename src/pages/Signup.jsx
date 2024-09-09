@@ -7,7 +7,7 @@ import { useSelector } from "react-redux";
 const Signup = () => {
   const history = useNavigate();
   const isLogged = useSelector((state) => state.auth.isLoggedIn);
-  if (isLogged === true) {
+  if (isLogged === false) {
     history("/");
   }
   const [Data, setData] = useState({

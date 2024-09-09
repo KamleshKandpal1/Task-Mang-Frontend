@@ -42,11 +42,12 @@ const AllTask = () => {
 
   return (
     <>
-      <div
-        className="w-full flex justify-end px-4 py-2"
-        onClick={() => setDisplay("fixed")}
-      >
-        <button>
+      <div className="w-full flex items-center justify-between px-4 py-2">
+        <h1 className="relative text-2xl font-semibold after:content-[''] after:absolute after:left-[20%] after:-bottom-[5px] after:-translate-x-1/2 after:w-[40%] after:h-[3px] after:bg-green-500 after:rounded-md">
+          All Tasks
+        </h1>
+
+        <button onClick={() => setDisplay("fixed")}>
           <IoMdAddCircle className="text-4xl text-gray-400 hover:text-gray-100 transition-all duration-500" />
         </button>
       </div>
