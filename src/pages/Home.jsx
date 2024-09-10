@@ -14,7 +14,6 @@ const Home = () => {
           color="#27AE60" // Green color
           height={2} // Height of the loader bar
           options={{ easing: "cubic-bezier(.53,.21,0,1" }} // Easing option for smooth transition
-          showOnShallow={false} // Optional: whether to show on shallow routing
           showSpinner={false} // Optional: whether to show a spinner at the top
         />
         <Outlet />
