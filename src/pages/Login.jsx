@@ -37,7 +37,7 @@ const Login = () => {
       const response = await axios.post(
         "https://task-mang-api-backend.onrender.com/api/v1/users/login",
         Data,
-        { timeout: 5000 } // 5 seconds timeout
+        { timeout: 10000 } // 5 seconds timeout
       );
 
       console.log(response);
