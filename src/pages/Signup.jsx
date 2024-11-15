@@ -67,7 +67,7 @@ const Signup = () => {
   return (
     <div className="h-[98vh] flex items-center justify-center">
       <ToasterSetup /> {/* Add Toaster Setup */}
-      <div className="p-4 w-2/6 rounded bg-gray-700/50">
+      <div className="p-4 md:w-3/6 sm:w-4/6 w-5/6 rounded bg-gray-700/50">
         <div className="text-2xl font-semibold">Sign-up</div>
         <input
           type="text"
@@ -109,7 +109,7 @@ const Signup = () => {
             Signup
           </button>
           <span className="text-sm font-semibold text-gray-500">
-            Already have an account?{" "}
+            Already have an account? <br className="min-[450px]:hidden" />
             <Link to="/login" className="hover:text-gray-300">
               Login here
             </Link>

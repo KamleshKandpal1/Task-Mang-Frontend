@@ -4,15 +4,18 @@ import ToasterSetup, { showToast } from "../components/ToasterSetup.jsx"; // Imp
 import axios from "axios";
 import { authActions } from "../store/auth.js";
 import { useDispatch, useSelector } from "react-redux";
+
 const Login = () => {
   const history = useNavigate();
   const dispatch = useDispatch();
   const isLogged = useSelector((state) => state.auth.isLoggedIn);
+
   useEffect(() => {
     if (isLogged) {
       history("/"); // Redirect to home if logged in
     }
   }, [isLogged, history]);
+
   const [Data, setData] = useState({
     email: "",
     password: "",
@@ -78,12 +81,12 @@ const Login = () => {
   return (
     <div className="h-[98vh] flex items-center justify-center">
       <ToasterSetup /> {/* Add Toaster Setup */}
-      <div className="p-4 w-2/6 rounded bg-gray-700/50">
-        <div className="text-2xl font-semibold">Login</div>
+      <div className="p-4 md:w-3/6 sm:w-4/6 w-5/6 rounded bg-gray-700/50">
+        <p className="text-2xl font-semibold">Login</p>
         <input
           type="email"
           placeholder="Email"
-          className="bg-gray-600 px-3 py-2 my-3 w-full rounded"
+          className="bg-gray-600 px-3 py-2 my-3 w-full rounded border-none outline-none focus:outline-none hover:outline-none hover:border-none"
           onChange={handleChange}
           value={Data.email}
           name="email"
@@ -91,21 +94,32 @@ const Login = () => {
         <input
           type="password"
           placeholder="Password"
-          className="bg-gray-600 px-3 py-2 my-3 w-full rounded"
+          className="bg-gray-600 px-3 py-2 my-3 w-full rounded border-none outline-none focus:outline-none hover:outline-none hover:border-none"
           onChange={handleChange}
           value={Data.password}
           name="password"
         />
-        <div className="flex w-full items-center justify-between">
+        {/* Dummy ID/Password Section */}
+        <div className="my-1 p-2 bg-gray-800 rounded-md text-gray-300">
+          <p>
+            Email :{" "}
+            <span className="font-mono text-gray-400">taskM@gmail.com</span>
+          </p>
+          <p>
+            Password :{" "}
+            <span className="font-mono text-gray-400">TaskM@123</span>
+          </p>
+        </div>
+        <div className="flex w-full items-center justify-between mt-3">
           <button
-            className="bg-blue-700 text-md font-medium text-white px-3 py-1.5 rounded-md hover:bg-blue-600"
+            className="bg-blue-700 text-base font-medium text-white px-3 py-1.5 rounded-md hover:bg-blue-600"
             onClick={handleSubmit}
           >
             Login
           </button>
           <span className="text-sm font-semibold text-gray-500">
-            Not having an account?{" "}
-            <Link to="/signup" className="hover:text-gray-300">
+            Not having an account ? <br className="min-[450px]:hidden" />
+            <Link to="/signup" className="hover:text-gray-300 font-bold">
               Sign-up here
             </Link>
           </span>

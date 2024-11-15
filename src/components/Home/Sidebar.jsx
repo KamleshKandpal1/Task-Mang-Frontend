@@ -8,8 +8,9 @@ import { authActions } from "../../store/auth";
 import { useDispatch } from "react-redux";
 import { IoIosLogOut } from "react-icons/io";
 import axios from "axios";
+import { RxCross2 } from "react-icons/rx";
 
-const Sidebar = () => {
+const Sidebar = ({ isSidebarVisible, toggleSidebar }) => {
   const dispatch = useDispatch();
   const history = useNavigate();
   const location = useLocation(); // Get the current location
@@ -79,15 +80,32 @@ const Sidebar = () => {
 
   return (
     <>
-      {userdata && (
-        <div>
-          <h2 className="text-xl font-semibold">
-            {capitalizeFullName(userdata.fullName)}
+      {/* {userdata && (
+        
+      )} */}
+      <div className="p-4 bg-gray-800 rounded-lg shadow-md">
+        <div className="flex flex-col items-start">
+          <h2 className="text-base md:text-base font-bold text-white">
+            {/* {capitalizeFullName(userdata.fullName)} */}
+            Kamesh Kandpal
           </h2>
-          <h4 className="text-gray-400 mb-[.5rem]">{userdata.email}</h4>
-          <hr />
+          <h4 className="text-xs sm:text-sm text-gray-400 truncate">
+            {/* {userdata.email} */}
+            kk@example.com
+          </h4>
         </div>
-      )}
+        <hr className="my-3 border-gray-600" />
+
+        {isSidebarVisible && (
+          <button
+            className="absolute top-2 right-2 z-20 text-white bg-gray-500 p-1 rounded hover:bg-red-600 transition duration-300 focus:outline-none focus:ring focus:ring-red-300"
+            onClick={toggleSidebar}
+          >
+            <RxCross2 className="text-sm" />
+          </button>
+        )}
+      </div>
+
       <div>
         {data.map((items, i) => {
           const isActive = location.pathname === items.link; // Check if the current link is active
@@ -95,7 +113,7 @@ const Sidebar = () => {
             <Link
               to={items.link}
               key={i}
-              className={`my-2 flex items-center px-2 py-1.5 rounded-lg cursor-pointer hover:bg-gray-600 transition-all duration-300 relative ${
+              className={`my-2 flex items-center p-1.5 rounded-lg cursor-pointer hover:bg-gray-600 transition-all duration-300 relative ${
                 isActive
                   ? "after:content-[''] after:absolute after:left-full after:-bottom-[0px] after:-translate-x-1/2 after:w-[2%] after:h-[100%] after:bg-green-500 after:rounded-md after:transition-all after:duration-300"
                   : ""

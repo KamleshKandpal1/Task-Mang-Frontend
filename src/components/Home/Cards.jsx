@@ -12,27 +12,27 @@ const Cards = ({
   setUpdateUserData,
   updateUserdata,
 }) => {
-  // const item = [
-  //   {
-  //     title: "title 1",
-  //     desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid neque praesentium labore odit, sunt eaque dolorum suscipit, sed nisi dolore ad quidem asperiores minima obcaecati beatae quae quasi, sint ea.",
-  //     complete: "false",
-  //     important: "true",
-  //   },
+  const item = [
+    {
+      title: "title 1",
+      desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid neque praesentium labore odit, sunt eaque dolorum suscipit, sed nisi dolore ad quidem asperiores minima obcaecati beatae quae quasi, sint ea.",
+      complete: "false",
+      important: "true",
+    },
 
-  //   {
-  //     title: "title 12",
-  //     desc: "desc 1",
-  //     complete: "true",
-  //     important: "true",
-  //   },
-  //   {
-  //     title: "title 13",
-  //     desc: "desc 1",
-  //     complete: "false",
-  //     important: "true",
-  //   },
-  // ];
+    {
+      title: "title 12",
+      desc: "desc 1",
+      complete: "true",
+      important: "true",
+    },
+    {
+      title: "title 13",
+      desc: "desc 1",
+      complete: "false",
+      important: "true",
+    },
+  ];
   const accessToken = localStorage.getItem("accessToken");
   const headers = {
     Authorization: `Bearer ${accessToken}`,
@@ -97,70 +97,76 @@ const Cards = ({
   };
 
   return (
-    <div className="grid relative md:grid-cols-4 sm:grid-cols-3 gap-4 p-4">
+    <div className="grid relative gap-4 p-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 min-[520px]:grid-cols-2">
       <div className="absolute">
         <ToasterSetup />
       </div>
-      {data &&
-        data.map((items, i) => (
+      {item &&
+        item.map((items, i) => (
           <div
-            className="bg-gray-700/40 rounded-xl px-2 py-4 flex flex-col justify-between glsas-morf"
+            className="bg-gray-700/60 rounded-lg p-4 shadow-lg flex flex-col justify-between transition-transform transform hover:scale-105 gap-4"
             key={items._id}
           >
-            <div>
+            <div className="flex flex-col gap-y-2">
               <h3
-                className="text-lg font-semiboldbreak-words text-pretty "
+                className="text-lg font-semibold text-white break-words"
                 style={{ hyphens: "auto" }}
               >
                 {items.title}
               </h3>
               <p
-                className="text-gray-300 text-sm font-normal my-2 break-words text-pretty "
+                className="text-gray-300 text-sm font-light break-words"
                 style={{ hyphens: "auto" }}
               >
                 {items.desc}
               </p>
             </div>
-            <div className="mt-4 w-full flex items-center justify-around ">
+            <div className="flex items-center justify-between">
               <button
-                className={`${
-                  items.complete === true ? "bg-green-700" : "bg-red-400"
-                }  py-1.5 px-2  rounded-3xl text-sm font-medium `}
+                className={`py-1.5 px-4 rounded-full text-xs font-medium transition-colors duration-300 ${
+                  items.complete
+                    ? "bg-green-600 text-white"
+                    : "bg-red-500 text-white"
+                }`}
                 onClick={() => handleCompleteTask(items._id)}
               >
-                {items.complete === true ? "Completed" : "In-Completed"}
+                {items.complete ? "Completed" : "In-Complete"}
               </button>
 
-              <div className="w-1/2 text-xl p-2 flex gap-3 justify-end ">
-                <button onClick={() => handleImportantTask(items._id)}>
-                  <FaHeart
-                    className={`${
-                      items.important === true ? "text-red-400" : ""
-                    }  `}
-                  />
+              <div className="flex items-center gap-2">
+                <button
+                  className={`transition-transform transform hover:scale-110 ${
+                    items.important ? "text-red-400" : "text-gray-400"
+                  }`}
+                  onClick={() => handleImportantTask(items._id)}
+                >
+                  <FaHeart />
                 </button>
                 <button
+                  className="text-gray-400 hover:text-gray-200 transition-transform transform hover:scale-110"
                   onClick={() =>
                     handleEditTask(items._id, items.title, items.desc)
                   }
                 >
                   <CiEdit />
                 </button>
-                <button onClick={() => handleDeleteTask(items._id)}>
+                <button
+                  className="text-gray-400 hover:text-red-400 transition-transform transform hover:scale-110"
+                  onClick={() => handleDeleteTask(items._id)}
+                >
                   <MdDeleteForever />
                 </button>
               </div>
             </div>
           </div>
         ))}
-      {/*  */}
       {home && (
         <div
-          className="flex items-center bg-gray-700/40 rounded-md p-4 justify-center text-gray-300 hover:scale-105 hover:cursor-pointer transition-all duration-500"
+          className="flex items-center justify-center bg-gray-800/60 rounded-lg p-5 text-gray-300 hover:scale-105 hover:cursor-pointer transition-all duration-300 shadow-md hover:bg-gray-700/60 shadow-slate-900/80"
           onClick={() => setDisplay("fixed")}
         >
-          <IoMdAddCircle className="text-3xl" />
-          <h2 className="text-3xl">Add Task</h2>
+          <IoMdAddCircle className="text-4xl mr-2" />
+          <h2 className="text-lg font-semibold">Add Task</h2>
         </div>
       )}
     </div>
