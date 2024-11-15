@@ -12,27 +12,27 @@ const Cards = ({
   setUpdateUserData,
   updateUserdata,
 }) => {
-  const item = [
-    {
-      title: "title 1",
-      desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid neque praesentium labore odit, sunt eaque dolorum suscipit, sed nisi dolore ad quidem asperiores minima obcaecati beatae quae quasi, sint ea.",
-      complete: "false",
-      important: "true",
-    },
+  // const item = [
+  //   {
+  //     title: "title 1",
+  //     desc: "Lorem ipsum dolor, sit amet consectetur adipisicing elit. Aliquid neque praesentium labore odit, sunt eaque dolorum suscipit, sed nisi dolore ad quidem asperiores minima obcaecati beatae quae quasi, sint ea.",
+  //     complete: "false",
+  //     important: "true",
+  //   },
 
-    {
-      title: "title 12",
-      desc: "desc 1",
-      complete: "true",
-      important: "true",
-    },
-    {
-      title: "title 13",
-      desc: "desc 1",
-      complete: "false",
-      important: "true",
-    },
-  ];
+  //   {
+  //     title: "title 12",
+  //     desc: "desc 1",
+  //     complete: "true",
+  //     important: "true",
+  //   },
+  //   {
+  //     title: "title 13",
+  //     desc: "desc 1",
+  //     complete: "false",
+  //     important: "true",
+  //   },
+  // ];
   const accessToken = localStorage.getItem("accessToken");
   const headers = {
     Authorization: `Bearer ${accessToken}`,
@@ -101,11 +101,11 @@ const Cards = ({
       <div className="absolute">
         <ToasterSetup />
       </div>
-      {item &&
-        item.map((items, i) => (
+      {data &&
+        data.map((items, i) => (
           <div
             className="bg-gray-700/60 rounded-lg p-4 shadow-lg flex flex-col justify-between transition-transform transform hover:scale-105 gap-4"
-            key={items._id}
+            key={i}
           >
             <div className="flex flex-col gap-y-2">
               <h3

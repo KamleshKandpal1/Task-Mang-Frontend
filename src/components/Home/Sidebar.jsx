@@ -80,31 +80,30 @@ const Sidebar = ({ isSidebarVisible, toggleSidebar }) => {
 
   return (
     <>
-      {/* {userdata && (
-        
-      )} */}
-      <div className="p-4 bg-gray-800 rounded-lg shadow-md">
-        <div className="flex flex-col items-start">
-          <h2 className="text-base md:text-base font-bold text-white">
-            {/* {capitalizeFullName(userdata.fullName)} */}
-            Kamesh Kandpal
-          </h2>
-          <h4 className="text-xs sm:text-sm text-gray-400 truncate">
-            {/* {userdata.email} */}
-            kk@example.com
-          </h4>
-        </div>
-        <hr className="my-3 border-gray-600" />
+      {userdata && (
+        <div className="p-4 bg-gray-800 rounded-lg shadow-md">
+          <div className="flex flex-col items-start">
+            <h2 className="text-base md:text-base font-bold text-white">
+              {capitalizeFullName(userdata.fullName)}
+              {/* Kamesh Kandpal */}
+            </h2>
+            <h4 className="text-xs sm:text-sm text-gray-400 truncate">
+              {userdata.email}
+              {/* kk@example.com */}
+            </h4>
+          </div>
+          <hr className="my-3 border-gray-600" />
 
-        {isSidebarVisible && (
-          <button
-            className="absolute top-2 right-2 z-20 text-white bg-gray-500 p-1 rounded hover:bg-red-600 transition duration-300 focus:outline-none focus:ring focus:ring-red-300"
-            onClick={toggleSidebar}
-          >
-            <RxCross2 className="text-sm" />
-          </button>
-        )}
-      </div>
+          {isSidebarVisible && (
+            <button
+              className="absolute top-2 right-2 z-20 text-white bg-gray-500 p-1 rounded hover:bg-red-600 transition duration-300 focus:outline-none focus:ring focus:ring-red-300"
+              onClick={toggleSidebar}
+            >
+              <RxCross2 className="text-sm" />
+            </button>
+          )}
+        </div>
+      )}
 
       <div>
         {data.map((items, i) => {

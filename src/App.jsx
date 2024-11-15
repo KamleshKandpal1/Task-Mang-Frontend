@@ -28,8 +28,8 @@ function App() {
     ) {
       dispatch(authActions.login());
     } else if (isLogged === false) {
-      // navigation("/login");
-      navigation("/");
+      navigation("/login");
+      // navigation("/");
     }
   }, []);
 
