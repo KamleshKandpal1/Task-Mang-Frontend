@@ -16,6 +16,7 @@ const Home = () => {
           options={{ easing: "cubic-bezier(.53,.21,0,1" }} // Easing option for smooth transition
           showSpinner={false} // Optional: whether to show a spinner at the top
         />
+        {/*  */}
         <Outlet />
       </div>
     </div>
